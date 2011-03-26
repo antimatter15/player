@@ -632,10 +632,10 @@ function guessSong(n){
     .replace(/^\d+\s*/,'');
     
   var artist='Unknown',album='Unknown';
-  console.log(parts);
+  //console.log(parts);
 
   if(/\-/.test(name)){
-    console.log('DashInName');
+    //console.log('DashInName');
     var np = name.split('-').reverse();
     name = np[0];
     if(np.length >= 2){
@@ -649,14 +649,14 @@ function guessSong(n){
       var album = parts[2]
         .replace(/^\s|\s$/g,'');
       if(!album){
-        console.log('UndefinedAlbum');
+        //console.log('UndefinedAlbum');
         album = parts[1]
         .replace(/^\s|\s$/g,'');
       }
     }
   }else{
     if(parts[1]){
-      console.log('DefaultCase');
+      //console.log('DefaultCase');
       var album = parts[1]
       .replace(/^\s|\s$/g,'')
     }
@@ -667,14 +667,14 @@ function guessSong(n){
     }
   }
   if(/\-/.test(album)){
-    console.log('DashInAlbum');
+    //console.log('DashInAlbum');
     var as = album.split('-');
     album = as[1];
     if(!artist){
       artist = as[0];
     }
   }
-  console.log(name, 'artist',artist,'album',album);
+  //console.log(name, 'artist',artist,'album',album);
   return {
     Title: name,
     Artist: artist,
