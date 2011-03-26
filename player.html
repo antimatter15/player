@@ -1,5 +1,5 @@
 <!doctype html>
-<html manifest="player.manifest?2">
+<html>
   <head>
     <title>MP3 Player</title>
     <link rel="icon"  type="image/png" href="16.png">
@@ -54,17 +54,23 @@ background-image: -moz-linear-gradient(
       
       
       #search {
-        background: #929292;
-        border: none;
-        outline: none;
-        font-size: 30px;
         width: 80%;
         position:fixed;
         top: 0;
         padding:0;
         margin:0;
+      }
+      
+      
+      #search input {
+        width: 100%;
         height: 36px;
+        font-size: 30px;
+        border: none;
+        padding-left: 5px;
         border-bottom: 1px solid #929292;
+        outline: none;
+        background: #929292;
         background-image: -webkit-gradient(
             linear,
             left top,
@@ -77,8 +83,8 @@ background-image: -moz-linear-gradient(
             rgb(255,255,255) 0%,
             rgb(221,221,221) 100%
         );
+        
       }
-      
       audio {
         width: 100%;
         
@@ -94,11 +100,11 @@ background-image: -moz-linear-gradient(
       #songs {
         background: #ddd;
         width: 80%;
+        padding-left: 5px;
       }
       
       #songs table {
         width: 100%;
-        margin: 5px;
       }
       
       #playlist {
@@ -112,6 +118,7 @@ background-image: -moz-linear-gradient(
       #playlist table {
         width: 100%;
         margin: 5px;
+        margin-left: 10px;
       }
       
       table tr:hover {
@@ -119,12 +126,18 @@ background-image: -moz-linear-gradient(
         border-radius: 5px;
       }
       
-      
       table tr {
         -webkit-user-select: none;
         user-select: none;
         cursor: default;
+        
       }
+      table td {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        padding-right: 5px;
+      }
+      
       
       #playlist table tr.playing {
         /*background: #76AD8B;*/
@@ -283,7 +296,7 @@ background-image: -moz-linear-gradient(
         try{
           currentSong.nextSibling.onclick(); 
         }catch(e){
-          currentSong = $("playtable").firstChild;
+          currentSong = document.querySelector("#playtable tr");
           currentSong.onclick();
         }
       }
@@ -326,16 +339,17 @@ background-image: -moz-linear-gradient(
       
       </div>
     </div>
-    
-    <input type="text" id="search" placeholder="filter library" autocomplete=off oninput="runSearch(this.value)">
-    <div style="height: 32px"></div>
+    <div id="search">
+      <input type="text" placeholder="filter library" spellcheck=off autocomplete=off oninput="runSearch(this.value)">
+    </div>
+    <div style="height: 37px"></div>
     <div id="playlist">
       <table id="playtable"></table>
     </div>
     
     
     <div id="songs">
-      <table id="songtable">
+      <table id="songtable" cellspacing=0 cellpadding=0>
       </table>
     </div>
     
