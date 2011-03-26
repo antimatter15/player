@@ -1,5 +1,5 @@
 <!doctype html>
-<html manifest="player.manifest?1">
+<html manifest="player.manifest?2">
   <head>
     <title>MP3 Player</title>
     <link rel="icon"  type="image/png" href="16.png">
@@ -16,11 +16,11 @@
         background: #929292;
         height: 20%;
         width: 30%;
-        min-height: 120px;
+        min-height: 160px;
         border-radius: 5px;
         z-index: 100;
         position: absolute;
-        top: 40%;
+        top: 35%;
         left: 35%;
       }
       
@@ -115,7 +115,18 @@
     <script src="id3v2.js"></script>
     <script>
       //beware! this code is pretty hacky and  ugly.
-      
+      /*
+        This doesn't use jQuery or any js libraries, not because they aren't great
+        in retrospect, I really think I should have used jQuery here.
+        
+        But yesterday when I started this, I was really offended by a chrome extension
+        which was literally a one liner content script that had jquery as a dependency.
+        
+        That's just terrible.
+        
+        Anyway, this is more of a proof of concept and in a weird backwards way, I prefer
+        to do my prototypes without jQuery.
+      */
       function parseFile(file, callback){
         if(localStorage[file.fileName]) return callback(JSON.parse(localStorage[file.fileName]));
         ID3v2.parseFile(file,function(tags){
@@ -281,7 +292,10 @@
           <input type="file" webkitdirectory directory multiple mozdirectory onchange="getSongs(this.files)">
         </center>
         <p style="padding-left: 15px">
-          This is <b>almost certainly</b> the first mp3 player of its kind. Right above you should see a file prompt, go and select your <b>music folder</b>.
+          This is <b>almost certainly</b> the first mp3 player of its kind. Right above you should see a file prompt, go and select your <b>music folder</b>. It will index songs on your hard drive, read ID3 tags, play songs and it works offline. <b>HTML5 is awesome.</b>
+        </p>
+        <p style="padding-left: 15px">
+          By <a href="http://twitter.com/antimatter15">@antimatter15</a> <a href="http://antimatter15.com">http://antimatter15.com</a>
         </p>
       </div>
       <div id="support" style="position:absolute;z-index:99999;color:red;font-size:x-large"> <!-- insert cheap knockoff modernizer clone -->
