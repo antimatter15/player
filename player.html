@@ -5,18 +5,30 @@
     <link rel="icon"  type="image/png" href="16.png">
     <style>
       body {
-        background: #262626;
+        background: #444;
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0.8, rgb(133,133,133)),
+    color-stop(1, rgb(68,68,68))
+);
+background-image: -moz-linear-gradient(
+    left center,
+    rgb(133,133,133) 80%,
+    rgb(68,68,68) 100%
+);
         font-family: sans-serif;
         font-size: 14px;
         margin: 0;
-        overflow: hidden;
+        overflow-y: scroll;
       }
       #startup #prompt {
         width: 200px;
-        background: #929292;
+        background: #ddd;
         height: 20%;
         width: 30%;
-        min-height: 160px;
+        min-height: 180px;
         border-radius: 5px;
         z-index: 100;
         position: absolute;
@@ -46,12 +58,25 @@
         border: none;
         outline: none;
         font-size: 30px;
-        width: 100%;
+        width: 80%;
         position:fixed;
         top: 0;
         padding:0;
         margin:0;
         height: 36px;
+        border-bottom: 1px solid #929292;
+        background-image: -webkit-gradient(
+            linear,
+            left top,
+            left bottom,
+            color-stop(0, rgb(255,255,255)),
+            color-stop(1, rgb(221,221,221))
+        );
+        background-image: -moz-linear-gradient(
+            center top,
+            rgb(255,255,255) 0%,
+            rgb(221,221,221) 100%
+        );
       }
       
       audio {
@@ -61,13 +86,13 @@
       
       #footer {
         position: fixed;
-        bottom: 0;
+        bottom: -3px;
         width: 100%;
-        background: #262626;
+        background: #858585;
       }
       
       #songs {
-        background: #bdbdbd;
+        background: #ddd;
         width: 80%;
       }
       
@@ -81,16 +106,16 @@
         position: fixed;
         right: 0;
         color: white;
-        top: 36px;
-        
+        top: 0;
       }
       
       #playlist table {
         width: 100%;
+        margin: 5px;
       }
       
       table tr:hover {
-        background: #7FAAB3;
+        background: #BBCEE9;
         border-radius: 5px;
       }
       
@@ -162,7 +187,6 @@
       function getSongs(files){
         $("mask").style.display = 'none';
         $("startup").style.display = 'none';
-        document.body.style.overflow = 'auto';
         var queue = [];
         var mp3 = canPlay('audio/mpeg;'), ogg = canPlay('audio/ogg; codecs="vorbis"');
         for(var i = 0; i < files.length; i++){
@@ -304,7 +328,7 @@
     </div>
     
     <input type="text" id="search" placeholder="filter library" autocomplete=off oninput="runSearch(this.value)">
-    <div style="height: 31px"></div>
+    <div style="height: 32px"></div>
     <div id="playlist">
       <table id="playtable"></table>
     </div>
