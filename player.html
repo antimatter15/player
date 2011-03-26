@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html manifest="player.appcache">
   <head>
     <title>MP3 Player</title>
     <link rel="icon"  type="image/png" href="16.png">
@@ -16,7 +16,7 @@
         background: #929292;
         height: 20%;
         width: 30%;
-        
+        min-height: 120px;
         border-radius: 5px;
         z-index: 100;
         position: absolute;
@@ -34,7 +34,8 @@
         z-index: 4;
       }
       #startup input {
-        padding: 30px;
+        padding-top: 15px;
+        padding-left: 15px;
         text-align: center;
       }
       
@@ -208,7 +209,7 @@
               if(queue.length == lq){
                 process();
               }
-            },1000);
+            },300);
           }
         }
         process();
@@ -231,9 +232,12 @@
   <body>
     <div id="mask"></div>
     <div id="startup">
-      
       <div>
-        <input type="file" webkitdirectory onchange="getSongs(this.files)">
+        <input type="file" webkitdirectory directory multiple mozdirectory onchange="getSongs(this.files)">
+        
+        <p style="padding-left: 15px">
+          hi. this is <b>almost certainly</b> the first mp3 player of its kind. Right above you should see a file prompt, go and select your <b>music folder</b>.
+        </p>
       </div>
     </div>
     
