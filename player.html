@@ -11,7 +11,7 @@
         margin: 0;
         overflow: hidden;
       }
-      #startup div {
+      #startup #prompt {
         width: 200px;
         background: #929292;
         height: 20%;
@@ -32,11 +32,12 @@
         top: 0;
         height: 100%;
         z-index: 4;
+        background: #000;
       }
-      #startup input {
-        padding-top: 15px;
-        padding-left: 15px;
-        text-align: center;
+      
+      #prompt input {
+        margin-top: 15px;
+        margin-left: 15px;
       }
       
       
@@ -71,7 +72,6 @@
       }
       
       #songs table {
-        margin: 5px;
         width: 100%;
        
       }
@@ -142,16 +142,30 @@
         }
       }
       
+      function canPlay(type){
+        var a = document.createElement('audio');
+        return !!(a.canPlayType && a.canPlayType(type).replace(/no/, ''));
+      }
+      
       function $(id){return document.getElementById(id)}
       function getSongs(files){
         $("mask").style.display = 'none';
         $("startup").style.display = 'none';
         document.body.style.overflow = 'auto';
         var queue = [];
+        var mp3 = canPlay('audio/mpeg;'), ogg = canPlay('audio/ogg; codecs="vorbis"');
         for(var i = 0; i < files.length; i++){
           var file = files[i];
+          
           if(file.fileName.indexOf('mp3') != -1){ //only does mp3 for now
-            queue.push(file);
+            if(mp3){
+              queue.push(file);
+            }
+          }
+          if(file.fileName.indexOf('ogg') != -1  || file.fileName.indexOf('oga') != -1){
+            if(ogg){
+              queue.push(file);
+            }
           }
         }
                                 
@@ -162,27 +176,27 @@
             parseFile(f,function(tags){
               console.log(tags);
               var tr = document.createElement('tr');
-              var t2 = guessSong(f.webkitRelativePath); 
-              
+              var t2 = guessSong(f.webkitRelativePath || f.mozFullPath || f.fileName); 
+              //it should be innerText/contentText but its annoying.
               var td = document.createElement('td');
-              td.innerText = tags.Title || t2.Title;
+              td.innerHTML = tags.Title || t2.Title;
               tr.appendChild(td);
               
               var td = document.createElement('td');
-              td.innerText = tags.Artist || t2.Artist;
+              td.innerHTML = tags.Artist || t2.Artist;
               tr.appendChild(td);
               
               var td = document.createElement('td');
-              td.innerText = tags.Album || t2.Album;
+              td.innerHTML = tags.Album || t2.Album;
               tr.appendChild(td);
               
               var td = document.createElement('td');
-              td.innerText = tags.Genre || "";
+              td.innerHTML = tags.Genre || "";
               tr.appendChild(td);
               tr.onclick = function(){
                 var pl = document.createElement('tr');
                 var st = document.createElement('td');
-                st.innerText = tags.Title || t2.Title;
+                st.innerHTML = tags.Title || t2.Title;
                 pl.appendChild(st);
                 $("playtable").appendChild(pl);
                 pl.file = f;
@@ -190,7 +204,18 @@
                   if(e && e.button == 1){
                     pl.parentNode.removeChild(pl);
                   }else{
-                    $("player").src = webkitURL.createObjectURL(f);
+                    var url;
+                    if(window.createObjectURL){
+                      url = window.createObjectURL(f)
+                    }else if(window.createBlobURL){
+                      url = window.createBlobURL(f)
+                    }else if(window.URL && window.URL.createObjectURL){
+                      url = window.URL.createObjectURL(f)
+                    }else if(window.webkitURL && window.webkitURL.createObjectURL){
+                      url = window.webkitURL.createObjectURL(f)
+                    }
+                    
+                    $("player").src = url;
                     $("player").play();
                     for(var i = document.querySelectorAll('.playing'), l = i.length; l--;){
                       i[l].className = '';
@@ -227,17 +252,40 @@
           currentSong.onclick();
         }
       }
+      
+      onload = function(){
+        //with no dependencies, it should be fine to use this instead of ondomcontentloaded
+        var a = document.createElement('audio');
+        if(!a.canPlayType) $("support").innerHTML += "Your browser does not support HTML5 Audio<br>";
+        if(!(a.canPlayType && a.canPlayType('audio/ogg; codecs="vorbis"').replace(/no/, ''))) 
+          $("support").innerHTML += "Your browser does not support Ogg Vorbis Playback<br>";
+        if(!(a.canPlayType && a.canPlayType('audio/mpeg;').replace(/no/, ''))) 
+          $("support").innerHTML += "Your browser does not support MP3 Playback<br>";
+        var f = document.createElement('input');
+        f.type = 'file';
+        if(!('multiple' in f)) $("support").innerHTML += "Your browser does not support selecting multiple files<br>";
+        if(!('webkitdirectory' in f)) $("support").innerHTML += "Your browser probably does not support selecting directories<br>";
+        if(window.createObjectURL){}else if(window.createBlobURL){}else if(window.URL && window.URL.createObjectURL){
+        }else if(window.webkitURL && window.webkitURL.createObjectURL){}else{
+          $("support").innerHTML += "Your browser probably does not support Object URLs<br>";
+        }
+        
+      }
     </script>
   </head>
   <body>
     <div id="mask"></div>
     <div id="startup">
-      <div>
-        <input type="file" webkitdirectory directory multiple mozdirectory onchange="getSongs(this.files)">
-        
+      <div id="prompt">
+        <center>
+          <input type="file" webkitdirectory directory multiple mozdirectory onchange="getSongs(this.files)">
+        </center>
         <p style="padding-left: 15px">
           This is <b>almost certainly</b> the first mp3 player of its kind. Right above you should see a file prompt, go and select your <b>music folder</b>.
         </p>
+      </div>
+      <div id="support" style="position:absolute;z-index:99999;color:red;font-size:x-large"> <!-- insert cheap knockoff modernizer clone -->
+      
       </div>
     </div>
     
