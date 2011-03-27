@@ -149,6 +149,21 @@ background-image: -moz-linear-gradient(
         padding-left: 20px;
       }
       
+      #listtools {
+        position: fixed;
+        bottom: 40px;
+        right: 5px;
+        color: #ddd;
+      }
+      #listtools a {
+        color: white;
+        text-decoration: none;
+      }
+      
+      tr.hidden {
+        display:none;
+      }
+      
     </style>
     <script src="id3v2.js"></script>
     <script>
@@ -180,13 +195,13 @@ background-image: -moz-linear-gradient(
       }
       
       function runSearch(query){
-        //console.log(query);
+        console.log(query);
         var regex = new RegExp(query.trim().replace(/\s+/g, '.*'), 'ig');
         for(var i = $('songtable').getElementsByTagName('tr'), l = i.length; l--;){
           if(regex.test(i[l].innerHTML)){
-            i[l].style.display = ''
+            i[l].className = 'visible'
           }else{
-            i[l].style.display = 'none';
+            i[l].className = 'hidden';
           }
         }
       }
@@ -248,6 +263,7 @@ background-image: -moz-linear-gradient(
                 pl.appendChild(st);
                 $("playtable").appendChild(pl);
                 pl.file = f;
+                pl.className = 'visible';
                 pl.onclick = function(e){
                   if(e && e.button == 1){
                     pl.parentNode.removeChild(pl);
@@ -301,6 +317,23 @@ background-image: -moz-linear-gradient(
         }
       }
       
+      function shuffle(){
+        var pt = document.getElementById('playtable');
+        //fisher yates shuffle. hopefully.
+        for(var i = document.querySelectorAll("#playtable tr"), l = i.length;  l--;){
+          var j = Math.floor(Math.random() * l);
+          var jel = i[j], iel = i[l];
+          var jref = jel.nextSibling, iref = iel.nextSibling;
+          pt.insertBefore(jel, iref);
+          pt.insertBefore(iel, jref);
+        }
+      }
+      
+      function empty(){
+        var pt = document.getElementById('playtable');
+        pt.innerHTML = '';
+      }
+      
       onload = function(){
         //with no dependencies, it should be fine to use this instead of ondomcontentloaded
         var a = document.createElement('audio');
@@ -318,6 +351,13 @@ background-image: -moz-linear-gradient(
           $("support").innerHTML += "Your browser probably does not support Object URLs<br>";
         }
         
+        document.querySelector('#search input').onkeydown = function(e){
+          if(e.keyCode == 13){
+            for(var i = document.querySelectorAll('#songtable tr.visible'), l = i.length; l--;){
+              i[l].onclick();
+            }
+          }
+        }
       }
     </script>
   </head>
@@ -346,8 +386,10 @@ background-image: -moz-linear-gradient(
     <div id="playlist">
       <table id="playtable"></table>
     </div>
-    
-    
+    <div id="listtools">
+      <a href="javascript:shuffle()">Shuffle</a> / 
+      <a href="javascript:empty()">Clear</a>
+    </div>
     <div id="songs">
       <table id="songtable" cellspacing=0 cellpadding=0>
       </table>
