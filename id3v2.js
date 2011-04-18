@@ -28,147 +28,147 @@ ID3v2 = {
 	//from: http://bitbucket.org/moumar/ruby-mp3info/src/tip/lib/mp3info/id3v2.rb
 	//TODO: replace with something longer
 	var TAGS = {
-    "AENC": "Audio encryption",
-    "APIC": "Attached picture",
-    "COMM": "Comments",
-    "COMR": "Commercial frame",
-    "ENCR": "Encryption method registration",
-    "EQUA": "Equalization",
-    "ETCO": "Event timing codes",
-    "GEOB": "General encapsulated object",
-    "GRID": "Group identification registration",
-    "IPLS": "Involved people list",
-    "LINK": "Linked information",
-    "MCDI": "Music CD identifier",
-    "MLLT": "MPEG location lookup table",
-    "OWNE": "Ownership frame",
-    "PRIV": "Private frame",
-    "PCNT": "Play counter",
-    "POPM": "Popularimeter",
-    "POSS": "Position synchronisation frame",
-    "RBUF": "Recommended buffer size",
-    "RVAD": "Relative volume adjustment",
-    "RVRB": "Reverb",
-    "SYLT": "Synchronized lyric/text",
-    "SYTC": "Synchronized tempo codes",
-    "TALB": "Album",
-    "TBPM": "BPM",
-    "TCOM": "Composer",
-    "TCON": "Genre",
-    "TCOP": "Copyright message",
-    "TDAT": "Date",
-    "TDLY": "Playlist delay",
-    "TENC": "Encoded by",
-    "TEXT": "Lyricist",
-    "TFLT": "File type",
-    "TIME": "Time",
-    "TIT1": "Content group description",
-    "TIT2": "Title",
-    "TIT3": "Subtitle",
-    "TKEY": "Initial key",
-    "TLAN": "Language(s)",
-    "TLEN": "Length",
-    "TMED": "Media type",
-    "TOAL": "Original album",
-    "TOFN": "Original filename",
-    "TOLY": "Original lyricist",
-    "TOPE": "Original artist",
-    "TORY": "Original release year",
-    "TOWN": "File owner",
-    "TPE1": "Artist",
-    "TPE2": "Band",
-    "TPE3": "Conductor",
-    "TPE4": "Interpreted, remixed, or otherwise modified by",
-    "TPOS": "Part of a set",
-    "TPUB": "Publisher",
-    "TRCK": "Track number",
-    "TRDA": "Recording dates",
-    "TRSN": "Internet radio station name",
-    "TRSO": "Internet radio station owner",
-    "TSIZ": "Size",
-    "TSRC": "ISRC (international standard recording code)",
-    "TSSE": "Software/Hardware and settings used for encoding",
-    "TYER": "Year",
-    "TXXX": "User defined text information frame",
-    "UFID": "Unique file identifier",
-    "USER": "Terms of use",
-    "USLT": "Unsychronized lyric/text transcription",
-    "WCOM": "Commercial information",
-    "WCOP": "Copyright/Legal information",
-    "WOAF": "Official audio file webpage",
-    "WOAR": "Official artist/performer webpage",
-    "WOAS": "Official audio source webpage",
-    "WORS": "Official internet radio station homepage",
-    "WPAY": "Payment",
-    "WPUB": "Publishers official webpage",
-    "WXXX": "User defined URL link frame"
-  };
-  
+		"AENC": "Audio encryption",
+		"APIC": "Attached picture",
+		"COMM": "Comments",
+		"COMR": "Commercial frame",
+		"ENCR": "Encryption method registration",
+		"EQUA": "Equalization",
+		"ETCO": "Event timing codes",
+		"GEOB": "General encapsulated object",
+		"GRID": "Group identification registration",
+		"IPLS": "Involved people list",
+		"LINK": "Linked information",
+		"MCDI": "Music CD identifier",
+		"MLLT": "MPEG location lookup table",
+		"OWNE": "Ownership frame",
+		"PRIV": "Private frame",
+		"PCNT": "Play counter",
+		"POPM": "Popularimeter",
+		"POSS": "Position synchronisation frame",
+		"RBUF": "Recommended buffer size",
+		"RVAD": "Relative volume adjustment",
+		"RVRB": "Reverb",
+		"SYLT": "Synchronized lyric/text",
+		"SYTC": "Synchronized tempo codes",
+		"TALB": "Album",
+		"TBPM": "BPM",
+		"TCOM": "Composer",
+		"TCON": "Genre",
+		"TCOP": "Copyright message",
+		"TDAT": "Date",
+		"TDLY": "Playlist delay",
+		"TENC": "Encoded by",
+		"TEXT": "Lyricist",
+		"TFLT": "File type",
+		"TIME": "Time",
+		"TIT1": "Content group description",
+		"TIT2": "Title",
+		"TIT3": "Subtitle",
+		"TKEY": "Initial key",
+		"TLAN": "Language(s)",
+		"TLEN": "Length",
+		"TMED": "Media type",
+		"TOAL": "Original album",
+		"TOFN": "Original filename",
+		"TOLY": "Original lyricist",
+		"TOPE": "Original artist",
+		"TORY": "Original release year",
+		"TOWN": "File owner",
+		"TPE1": "Artist",
+		"TPE2": "Band",
+		"TPE3": "Conductor",
+		"TPE4": "Interpreted, remixed, or otherwise modified by",
+		"TPOS": "Part of a set",
+		"TPUB": "Publisher",
+		"TRCK": "Track number",
+		"TRDA": "Recording dates",
+		"TRSN": "Internet radio station name",
+		"TRSO": "Internet radio station owner",
+		"TSIZ": "Size",
+		"TSRC": "ISRC (international standard recording code)",
+		"TSSE": "Software/Hardware and settings used for encoding",
+		"TYER": "Year",
+		"TXXX": "User defined text information frame",
+		"UFID": "Unique file identifier",
+		"USER": "Terms of use",
+		"USLT": "Unsychronized lyric/text transcription",
+		"WCOM": "Commercial information",
+		"WCOP": "Copyright/Legal information",
+		"WOAF": "Official audio file webpage",
+		"WOAR": "Official artist/performer webpage",
+		"WOAS": "Official audio source webpage",
+		"WORS": "Official internet radio station homepage",
+		"WPAY": "Payment",
+		"WPUB": "Publishers official webpage",
+		"WXXX": "User defined URL link frame"
+	};
+
 	var TAG_MAPPING_2_2_to_2_3 = {
-    "BUF": "RBUF",
-    "COM": "COMM",
-    "CRA": "AENC",
-    "EQU": "EQUA",
-    "ETC": "ETCO",
-    "GEO": "GEOB",
-    "MCI": "MCDI",
-    "MLL": "MLLT",
-    "PIC": "APIC",
-    "POP": "POPM",
-    "REV": "RVRB",
-    "RVA": "RVAD",
-    "SLT": "SYLT",
-    "STC": "SYTC",
-    "TAL": "TALB",
-    "TBP": "TBPM",
-    "TCM": "TCOM",
-    "TCO": "TCON",
-    "TCR": "TCOP",
-    "TDA": "TDAT",
-    "TDY": "TDLY",
-    "TEN": "TENC",
-    "TFT": "TFLT",
-    "TIM": "TIME",
-    "TKE": "TKEY",
-    "TLA": "TLAN",
-    "TLE": "TLEN",
-    "TMT": "TMED",
-    "TOA": "TOPE",
-    "TOF": "TOFN",
-    "TOL": "TOLY",
-    "TOR": "TORY",
-    "TOT": "TOAL",
-    "TP1": "TPE1",
-    "TP2": "TPE2",
-    "TP3": "TPE3",
-    "TP4": "TPE4",
-    "TPA": "TPOS",
-    "TPB": "TPUB",
-    "TRC": "TSRC",
-    "TRD": "TRDA",
-    "TRK": "TRCK",
-    "TSI": "TSIZ",
-    "TSS": "TSSE",
-    "TT1": "TIT1",
-    "TT2": "TIT2",
-    "TT3": "TIT3",
-    "TXT": "TEXT",
-    "TXX": "TXXX",
-    "TYE": "TYER",
-    "UFI": "UFID",
-    "ULT": "USLT",
-    "WAF": "WOAF",
-    "WAR": "WOAR",
-    "WAS": "WOAS",
-    "WCM": "WCOM",
-    "WCP": "WCOP",
-    "WPB": "WPB",
-    "WXX": "WXXX"
-  };
-  
-  //pulled from http://www.id3.org/id3v2-00 and changed with a simple replace
-  //probably should be an array instead, but thats harder to convert -_-
-  var ID3_2_GENRES = {
+		"BUF": "RBUF",
+		"COM": "COMM",
+		"CRA": "AENC",
+		"EQU": "EQUA",
+		"ETC": "ETCO",
+		"GEO": "GEOB",
+		"MCI": "MCDI",
+		"MLL": "MLLT",
+		"PIC": "APIC",
+		"POP": "POPM",
+		"REV": "RVRB",
+		"RVA": "RVAD",
+		"SLT": "SYLT",
+		"STC": "SYTC",
+		"TAL": "TALB",
+		"TBP": "TBPM",
+		"TCM": "TCOM",
+		"TCO": "TCON",
+		"TCR": "TCOP",
+		"TDA": "TDAT",
+		"TDY": "TDLY",
+		"TEN": "TENC",
+		"TFT": "TFLT",
+		"TIM": "TIME",
+		"TKE": "TKEY",
+		"TLA": "TLAN",
+		"TLE": "TLEN",
+		"TMT": "TMED",
+		"TOA": "TOPE",
+		"TOF": "TOFN",
+		"TOL": "TOLY",
+		"TOR": "TORY",
+		"TOT": "TOAL",
+		"TP1": "TPE1",
+		"TP2": "TPE2",
+		"TP3": "TPE3",
+		"TP4": "TPE4",
+		"TPA": "TPOS",
+		"TPB": "TPUB",
+		"TRC": "TSRC",
+		"TRD": "TRDA",
+		"TRK": "TRCK",
+		"TSI": "TSIZ",
+		"TSS": "TSSE",
+		"TT1": "TIT1",
+		"TT2": "TIT2",
+		"TT3": "TIT3",
+		"TXT": "TEXT",
+		"TXX": "TXXX",
+		"TYE": "TYER",
+		"UFI": "UFID",
+		"ULT": "USLT",
+		"WAF": "WOAF",
+		"WAR": "WOAR",
+		"WAS": "WOAS",
+		"WCM": "WCOM",
+		"WCP": "WCOP",
+		"WPB": "WPB",
+		"WXX": "WXXX"
+	};
+
+	//pulled from http://www.id3.org/id3v2-00 and changed with a simple replace
+	//probably should be an array instead, but thats harder to convert -_-
+	var ID3_2_GENRES = {
 		"0": "Blues",
 		"1": "Classic Rock",
 		"2": "Country",
@@ -579,8 +579,7 @@ parseURL: function(url, onComplete){
 parseFile: function(file, onComplete){
 
 	var reader = new FileReader();
-	//console.log(reader);
-	
+
 	var pos = 0, 
 			bits_required = 0, 
 			handle = function(){},
@@ -593,10 +592,10 @@ parseFile: function(file, onComplete){
 		if(bytes == 0) callback('',[]);
 	}
 	var responseText = '';
-  reader.onload = function(){
-    responseText = reader.result;
-  };
-  
+	reader.onload = function(){
+		responseText = reader.result;
+	};
+
 	(function(){
 	
 		if(responseText.length > pos + bits_required && bits_required){
@@ -615,71 +614,62 @@ parseFile: function(file, onComplete){
 }
 }
 
-
 //doesnt quite belong here but doesnt quite belong elsewhere either
 function guessSong(n){
-  var parts = unescape(n)
-    .replace(/^.*(music|desktop|document|video|home)/gi,'')
-    .replace(/\[[^\]]+\]/g,'')
-    .replace(/_/g,' ')
-    .replace(/[0-9]+\s*(kbps|\-)/,'')
-    .split(/[\/]/)
-    .reverse();
-    
-  var name = parts[0]
-    .replace(/\.(mp3|ogg|flac)/,'')
-    .replace(/^\s|\s$/g,'')
-    .replace(/^\d+\s*/,'');
-    
-  var artist='Unknown',album='Unknown';
-  //console.log(parts);
+	var parts = unescape(n)
+		.replace(/^.*(music|desktop|document|video|home)/gi,'')
+		.replace(/\[[^\]]+\]/g,'')
+		.replace(/_/g,' ')
+		.replace(/[0-9]+\s*(kbps|\-)/,'')
+		.split(/[\/]/)
+		.reverse();
 
-  if(/\-/.test(name)){
-    //console.log('DashInName');
-    var np = name.split('-').reverse();
-    name = np[0];
-    if(np.length >= 2){
-      artist = np[1];
-    }
-    if(np.length >= 3){
-      artist = np[2];
-      album = np[1]
-    }
-    if(parts[1] && parts[2]){
-      var album = parts[2]
-        .replace(/^\s|\s$/g,'');
-      if(!album){
-        //console.log('UndefinedAlbum');
-        album = parts[1]
-        .replace(/^\s|\s$/g,'');
-      }
-    }
-  }else{
-    if(parts[1]){
-      //console.log('DefaultCase');
-      var album = parts[1]
-      .replace(/^\s|\s$/g,'')
-    }
-    if(parts[2]){
-      var artist = parts[2]
-        .replace(/^\s|\s$/g,'')
-        .replace(/^\d+\s*/,'');
-    }
-  }
-  if(/\-/.test(album)){
-    //console.log('DashInAlbum');
-    var as = album.split('-');
-    album = as[1];
-    if(!artist){
-      artist = as[0];
-    }
-  }
-  //console.log(name, 'artist',artist,'album',album);
-  return {
-    Title: name,
-    Artist: artist,
-    Album: album
-  }
+	var name = parts[0]
+		.replace(/\.(mp3|ogg|flac)/,'')
+		.replace(/^\s|\s$/g,'')
+		.replace(/^\d+\s*/,'');
+
+	var artist='Unknown',album='Unknown';
+
+	if(/\-/.test(name)){
+		var np = name.split('-').reverse();
+		name = np[0];
+		if(np.length >= 2){
+			artist = np[1];
+		}
+		if(np.length >= 3){
+			artist = np[2];
+			album = np[1]
+		}
+		if(parts[1] && parts[2]){
+			var album = parts[2]
+				.replace(/^\s|\s$/g,'');
+			if(!album){
+				album = parts[1]
+				.replace(/^\s|\s$/g,'');
+			}
+		}
+	}else{
+		if(parts[1]){
+			var album = parts[1]
+			.replace(/^\s|\s$/g,'')
+		}
+		if(parts[2]){
+			var artist = parts[2]
+				.replace(/^\s|\s$/g,'')
+				.replace(/^\d+\s*/,'');
+		}
+	}
+	if(/\-/.test(album)){
+		var as = album.split('-');
+		album = as[1];
+		if(!artist){
+			artist = as[0];
+		}
+	}
+	return {
+		Title: name,
+		Artist: artist,
+		Album: album
+	}
 }
-
-
