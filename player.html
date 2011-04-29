@@ -219,7 +219,19 @@ background-image: -moz-linear-gradient(
         var mp3 = canPlay('audio/mpeg;'), ogg = canPlay('audio/ogg; codecs="vorbis"');
         for(var i = 0; i < files.length; i++){
           var file = files[i];
-          
+	  
+	  var path = file.webkitRelativePath || file.mozFullPath || file.fileName;
+          if (path.indexOf('.AppleDouble') != -1) {
+		// Meta-data folder on Apple file systems, skip
+		continue;
+          }         
+	  var size = file.size || file.fileSize || 4096;
+	  if(size < 4095) { 
+		// Most probably not a real MP3
+		console.log(path);
+		continue;
+	  }
+ 
           if(file.fileName.indexOf('mp3') != -1){ //only does mp3 for now
             if(mp3){
               queue.push(file);
