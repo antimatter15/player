@@ -181,10 +181,10 @@
         to do my prototypes without jQuery.
       */
       function parseFile(file, callback){
-        if(localStorage[file.fileName]) return callback(JSON.parse(localStorage[file.fileName]));
+        if(localStorage[file.name]) return callback(JSON.parse(localStorage[file.name]));
         ID3v2.parseFile(file,function(tags){
           //to not overflow localstorage
-          localStorage[file.fileName] = JSON.stringify({
+          localStorage[file.name] = JSON.stringify({
             Title: tags.Title,
             Artist: tags.Artist,
             Album: tags.Album,
@@ -220,7 +220,7 @@
         for(var i = 0; i < files.length; i++){
           var file = files[i];
 	  
-	  var path = file.webkitRelativePath || file.mozFullPath || file.fileName;
+	  var path = file.webkitRelativePath || file.mozFullPath || file.name;
           if (path.indexOf('.AppleDouble') != -1) {
 		// Meta-data folder on Apple file systems, skip
 		continue;
@@ -232,12 +232,12 @@
 		continue;
 	  }
  
-          if(file.fileName.indexOf('mp3') != -1){ //only does mp3 for now
+          if(file.name.indexOf('mp3') != -1){ //only does mp3 for now
             if(mp3){
               queue.push(file);
             }
           }
-          if(file.fileName.indexOf('ogg') != -1  || file.fileName.indexOf('oga') != -1){
+          if(file.name.indexOf('ogg') != -1  || file.name.indexOf('oga') != -1){
             if(ogg){
               queue.push(file);
             }
@@ -251,7 +251,7 @@
             parseFile(f,function(tags){
               console.log(tags);
               var tr = document.createElement('tr');
-              var t2 = guessSong(f.webkitRelativePath || f.mozFullPath || f.fileName); 
+              var t2 = guessSong(f.webkitRelativePath || f.mozFullPath || f.name); 
               //it should be innerText/contentText but its annoying.
               var td = document.createElement('td');
               td.innerHTML = tags.Title || t2.Title;
