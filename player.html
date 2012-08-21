@@ -6,18 +6,18 @@
     <style>
       body {
         background: #444;
-background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    color-stop(0.8, rgb(133,133,133)),
-    color-stop(1, rgb(68,68,68))
-);
-background-image: -moz-linear-gradient(
-    left center,
-    rgb(133,133,133) 80%,
-    rgb(68,68,68) 100%
-);
+        background-image: -webkit-gradient(
+            linear,
+            left top,
+            right top,
+            color-stop(0.8, rgb(133,133,133)),
+            color-stop(1, rgb(68,68,68))
+        );
+        background-image: -moz-linear-gradient(
+            left center,
+            rgb(133,133,133) 80%,
+            rgb(68,68,68) 100%
+        );
         font-family: sans-serif;
         font-size: 14px;
         margin: 0;
@@ -181,10 +181,10 @@ background-image: -moz-linear-gradient(
         to do my prototypes without jQuery.
       */
       function parseFile(file, callback){
-        if(localStorage[file.fileName]) return callback(JSON.parse(localStorage[file.fileName]));
+        if(localStorage[file.name]) return callback(JSON.parse(localStorage[file.name]));
         ID3v2.parseFile(file,function(tags){
           //to not overflow localstorage
-          localStorage[file.fileName] = JSON.stringify({
+          localStorage[file.name] = JSON.stringify({
             Title: tags.Title,
             Artist: tags.Artist,
             Album: tags.Album,
@@ -219,13 +219,25 @@ background-image: -moz-linear-gradient(
         var mp3 = canPlay('audio/mpeg;'), ogg = canPlay('audio/ogg; codecs="vorbis"');
         for(var i = 0; i < files.length; i++){
           var file = files[i];
-          
-          if(file.fileName.indexOf('mp3') != -1){ //only does mp3 for now
+	  
+	  var path = file.webkitRelativePath || file.mozFullPath || file.name;
+          if (path.indexOf('.AppleDouble') != -1) {
+		// Meta-data folder on Apple file systems, skip
+		continue;
+          }         
+	  var size = file.size || file.fileSize || 4096;
+	  if(size < 4095) { 
+		// Most probably not a real MP3
+		console.log(path);
+		continue;
+	  }
+ 
+          if(file.name.indexOf('mp3') != -1){ //only does mp3 for now
             if(mp3){
               queue.push(file);
             }
           }
-          if(file.fileName.indexOf('ogg') != -1  || file.fileName.indexOf('oga') != -1){
+          if(file.name.indexOf('ogg') != -1  || file.name.indexOf('oga') != -1){
             if(ogg){
               queue.push(file);
             }
@@ -239,7 +251,7 @@ background-image: -moz-linear-gradient(
             parseFile(f,function(tags){
               console.log(tags);
               var tr = document.createElement('tr');
-              var t2 = guessSong(f.webkitRelativePath || f.mozFullPath || f.fileName); 
+              var t2 = guessSong(f.webkitRelativePath || f.mozFullPath || f.name); 
               //it should be innerText/contentText but its annoying.
               var td = document.createElement('td');
               td.innerHTML = tags.Title || t2.Title;
