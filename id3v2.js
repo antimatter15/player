@@ -609,10 +609,18 @@ parseFile: function(file, onComplete){
 		}
 		setTimeout(arguments.callee, 0);
 	})()
-	reader.readAsBinaryString(file.slice(0, 128 * 1024));
+	reader.readAsBinaryString(fileSlice(file, 0, 128 * 1024));
 	return [reader, ID3v2.parseStream(read, onComplete)];
 }
 }
+
+
+function fileSlice(file, start, length){
+  if(file.mozSlice) return file.mozSlice(start, start + length);
+  if(file.webkitSlice) return file.webkitSlice(start, start + length);
+  if(file.slice) return file.slice(start, length);
+}
+
 
 //doesnt quite belong here but doesnt quite belong elsewhere either
 function guessSong(n){
