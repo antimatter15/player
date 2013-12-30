@@ -1,0 +1,209 @@
+/*! normalize.css v2.1.3 | MIT License | git.io/normalize */article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden],template{display:none}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}a{background:transparent}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased; }
+html{
+  height: 100%;
+}
+body {
+  position: relative;
+  background: #fff;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 1em;
+  height: 100%;
+}
+      #startup #prompt {
+        width: 200px;
+        background: #131313;
+        box-shadow: 0 0 20px rgba(0,0,0,0.6);
+        height: 20%;
+        width: 30%;
+        min-height: 180px;
+        border-radius: 5px;
+        z-index: 100;
+        position: absolute;
+        top: 35%;
+        left: 25%;
+        color: #fff;
+      }
+      
+      #mask {
+        position: absolute;
+        opacity: 0.5;
+        width: 100%;
+        left: 0;
+        top: 0;
+        height: 100%;
+        z-index: 4;
+        background: #000;
+      }
+      
+      #prompt input {
+        margin-top: 15px;
+        margin-left: 15px;
+      }
+      
+      
+      #search {
+       display: inline-block;
+      width: 80%;
+      height: 10%;
+      position: fixed;
+      top: 0;
+      z-index: 9;
+      }
+      
+      
+      #search input {
+        display: inline-block;
+        width: 100%;
+        border: none;
+        height: 100%;
+        padding-left: .5em;
+        outline: none;
+        background: transparent;
+        color: #131313;
+        font-size: 1.8em;
+      }
+
+      ::-webkit-input-placeholder {
+         color: rgba(255,255,255,0.4);
+      }
+
+      :-moz-placeholder { /* Firefox 18- */
+         color: rgba(255,255,255,0.4);
+      }
+
+      ::-moz-placeholder {  /* Firefox 19+ */
+         color: rgba(255,255,255,0.4); 
+      }
+
+      :-ms-input-placeholder {  
+         color: rgba(255,255,255,0.4); 
+      }
+      audio {
+        width: 100%;
+      }
+      
+      #player-container {
+        display: inline-block;
+        position: fixed;
+        top: 0;
+        right:0;
+        width: 20%;
+        height: 10%;
+        background: transparent;
+      }
+      #player{
+        margin-top: 6%;
+      }
+      
+      #songs {
+        position: fixed;
+        background: rgba(117,191,248, 1);
+        -webkit-animation: pulse 80s infinite alternate;
+        width: 80%;
+        height: 100%;
+        overflow: scroll;
+        padding-left: 5px;
+        top: 0;
+        padding-top: 5%;
+      }
+      @-webkit-keyframes pulse {
+      0% {background-color: rgba(248,117,117, 1);}
+     25% {background-color: rgba(217,171,255, 1);}
+     50% {background-color: rgba(243,248,117, 1);}
+     75% {background-color: rgba(165,248,117, 1);}
+     100% {background-color: rgba(117,191,248, 1);}
+}
+      
+      #songs table {
+        width: 100%;
+      }
+      
+      #playlist {
+        display: inline-block;
+width: 20%;
+height: 100%;
+position: fixed;
+right: 0;
+color: white;
+top: 0;
+padding-top: 5%;
+padding-bottom: 5%;
+overflow-y: scroll;
+overflow-x: hidden;
+background-color: #131313;
+      }
+      
+      #playlist table {
+        width: 100%;
+        margin: 5px;
+        margin-left: 10px;
+      }
+      
+      table tr:hover {
+        background: rgba(255,255,255,0.4);
+        border-radius: 5px;
+        color: #131313;
+        padding: 20px 0;
+      }
+      table tr {
+        padding: 10px 0;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: default;
+        
+      }
+      table td {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        padding-right: 5px;
+      }
+      
+      
+      #playlist table tr.playing {
+        /*background: #76AD8B;*/
+        font-style: italic;
+      }
+      
+
+      #playlist table tr.playing td {
+        padding-left: 20px;
+      }
+      
+      #listtools {
+        display: inline-block;
+        position: fixed;
+        bottom: 0%;
+        right: 0;
+        color: #ddd;
+        height: 5%;
+        width: 20%;
+        background-color: #131313;
+      }
+      #listtools a {
+        color: white;
+        text-decoration: none;
+      }
+      
+      tr.hidden {
+        display:none;
+      }
+      
+::-webkit-scrollbar {
+  width: 10px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #000;
+  border-radius: 0 2px 2px 0;
+}
+::-webkit-scrollbar-track {
+  background: #121212;
+  box-shadow: inset 2px 2px 5px rgba(0,0,0, 0.2)
+}
