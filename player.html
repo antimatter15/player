@@ -3,168 +3,7 @@
   <head>
     <title>MP3 Player</title>
     <link rel="icon"  type="image/png" href="16.png">
-    <style>
-      body {
-        background: #444;
-        background-image: -webkit-gradient(
-            linear,
-            left top,
-            right top,
-            color-stop(0.8, rgb(133,133,133)),
-            color-stop(1, rgb(68,68,68))
-        );
-        background-image: -moz-linear-gradient(
-            left center,
-            rgb(133,133,133) 80%,
-            rgb(68,68,68) 100%
-        );
-        font-family: sans-serif;
-        font-size: 14px;
-        margin: 0;
-        overflow-y: scroll;
-      }
-      #startup #prompt {
-        width: 200px;
-        background: #ddd;
-        height: 20%;
-        width: 30%;
-        min-height: 180px;
-        border-radius: 5px;
-        z-index: 100;
-        position: absolute;
-        top: 35%;
-        left: 35%;
-      }
-      
-      #mask {
-        position: absolute;
-        opacity: 0.5;
-        width: 100%;
-        left: 0;
-        top: 0;
-        height: 100%;
-        z-index: 4;
-        background: #000;
-      }
-      
-      #prompt input {
-        margin-top: 15px;
-        margin-left: 15px;
-      }
-      
-      
-      #search {
-        width: 80%;
-        position:fixed;
-        top: 0;
-        padding:0;
-        margin:0;
-      }
-      
-      
-      #search input {
-        width: 100%;
-        height: 36px;
-        font-size: 30px;
-        border: none;
-        padding-left: 5px;
-        border-bottom: 1px solid #929292;
-        outline: none;
-        background: #929292;
-        background-image: -webkit-gradient(
-            linear,
-            left top,
-            left bottom,
-            color-stop(0, rgb(255,255,255)),
-            color-stop(1, rgb(221,221,221))
-        );
-        background-image: -moz-linear-gradient(
-            center top,
-            rgb(255,255,255) 0%,
-            rgb(221,221,221) 100%
-        );
-        
-      }
-      audio {
-        width: 100%;
-        
-      }
-      
-      #footer {
-        position: fixed;
-        bottom: -3px;
-        width: 100%;
-        background: #858585;
-      }
-      
-      #songs {
-        background: #ddd;
-        width: 80%;
-        padding-left: 5px;
-      }
-      
-      #songs table {
-        width: 100%;
-      }
-      
-      #playlist {
-        width: 20%;
-        position: fixed;
-        right: 0;
-        color: white;
-        top: 0;
-      }
-      
-      #playlist table {
-        width: 100%;
-        margin: 5px;
-        margin-left: 10px;
-      }
-      
-      table tr:hover {
-        background: #BBCEE9;
-        border-radius: 5px;
-      }
-      
-      table tr {
-        -webkit-user-select: none;
-        user-select: none;
-        cursor: default;
-        
-      }
-      table td {
-        padding-top: 3px;
-        padding-bottom: 3px;
-        padding-right: 5px;
-      }
-      
-      
-      #playlist table tr.playing {
-        /*background: #76AD8B;*/
-        font-style: italic;
-      }
-      
-
-      #playlist table tr.playing td {
-        padding-left: 20px;
-      }
-      
-      #listtools {
-        position: fixed;
-        bottom: 40px;
-        right: 5px;
-        color: #ddd;
-      }
-      #listtools a {
-        color: white;
-        text-decoration: none;
-      }
-      
-      tr.hidden {
-        display:none;
-      }
-      
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="id3v2.js"></script>
     <script>
       //beware! this code is pretty hacky and  ugly.
@@ -374,27 +213,26 @@
     </script>
   </head>
   <body>
+    <!-- Start screen popup -->
     <div id="mask"></div>
     <div id="startup">
       <div id="prompt">
-        <center>
+      <p style="padding: 15px">
+          Select your folder, search your songs, create a plalist and listen to your tracks!
+        </p>
           <input type="file" webkitdirectory directory multiple mozdirectory onchange="getSongs(this.files)">
-        </center>
-        <p style="padding-left: 15px">
-          This is <b>almost certainly</b> the first mp3 player of its kind. Right above you should see a file prompt, go and select your <b>music folder</b>. It will index songs on your hard drive, read ID3 tags, play songs and it works offline. <b>HTML5 is awesome.</b>
-        </p>
-        <p style="padding-left: 15px">
-          By <a href="http://twitter.com/antimatter15">@antimatter15</a> <a href="http://antimatter15.com">http://antimatter15.com</a>
-        </p>
+        <!-- <p style="padding-left: 15px">
+          By <a href="http://twitter.com/antimatter15">@antimatter15</a> &amp; UI built by <a href="http://twitter.com/nicovanzyl">@nicovanzyl</a>
+        </p> -->
       </div>
       <div id="support" style="position:absolute;z-index:99999;color:red;font-size:x-large"> <!-- insert cheap knockoff modernizer clone -->
       
       </div>
     </div>
+    <!-- player ui -->
     <div id="search">
-      <input type="text" placeholder="filter library" spellcheck=off autocomplete=off oninput="runSearch(this.value)">
+      <input type="text" placeholder="Search: Song, Artist, Album or Genre" spellcheck=off autocomplete=on oninput="runSearch(this.value)">
     </div>
-    <div style="height: 37px"></div>
     <div id="playlist">
       <table id="playtable"></table>
     </div>
@@ -407,10 +245,7 @@
       </table>
     </div>
     
-
-    <div style="height: 50px"></div>
-    
-    <div id="footer">
+    <div id="player-container">
       <audio onended="nextSong()" controls id="player">
     </div>
   </body>
