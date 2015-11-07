@@ -87,26 +87,28 @@ body {
       }
       audio {
         width: 100%;
+background-color: #95B9C7;
       }
       
       #player-container {
         display: inline-block;
         position: fixed;
-        top: 0;
-        right:0;
+        top: 10%;
+        right:10%;
         width: 20%;
         height: 10%;
         background: transparent;
       }
       #player{
         margin-top: 6%;
+	
       }
       
       #songs {
         position: fixed;
         background: rgba(117,191,248, 1);
         -webkit-animation: pulse 80s infinite alternate;
-        width: 80%;
+        width: 60%;
         height: 100%;
         overflow: scroll;
         padding-left: 5px;
@@ -127,19 +129,19 @@ body {
       
       #playlist {
         display: inline-block;
-width: 20%;
+width: 40%;
 height: 100%;
 position: fixed;
 right: 0;
 color: white;
 top: 0;
-padding-top: 5%;
+padding-top: 10%;
 padding-bottom: 5%;
 overflow-y: scroll;
 overflow-x: hidden;
 background-color: #131313;
       }
-      
+     
       #playlist table {
         width: 100%;
         margin: 5px;
@@ -173,7 +175,7 @@ background-color: #131313;
       
 
       #playlist table tr.playing td {
-        padding-left: 20px;
+        padding-left: 50px;
       }
       
       #listtools {
@@ -182,12 +184,12 @@ background-color: #131313;
         bottom: 0%;
         right: 0;
         color: #ddd;
-        height: 5%;
-        width: 20%;
+        height: 10%;
+        width: 40%;
         background-color: #131313;
       }
       #listtools a {
-        color: white;
+        color: gold;
         text-decoration: none;
       }
       
@@ -196,14 +198,14 @@ background-color: #131313;
       }
       
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 20px;
   height: 0px;
 }
 ::-webkit-scrollbar-thumb {
   background-color: #000;
-  border-radius: 0 2px 2px 0;
+  border-radius: 0 1px 1px 0;
 }
 ::-webkit-scrollbar-track {
   background: #121212;
-  box-shadow: inset 2px 2px 5px rgba(0,0,0, 0.2)
+  box-shadow: inset 1px 1px 1px rgba(0,0,0, 0.2)
 }

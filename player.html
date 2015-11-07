@@ -231,7 +231,7 @@
     </div>
     <!-- player ui -->
     <div id="search">
-      <input type="text" placeholder="Search: Song, Artist, Album or Genre" spellcheck=off autocomplete=on oninput="runSearch(this.value)">
+      <input type="text" placeholder="Search: Song, Artist or Album" spellcheck=off autocomplete=on oninput="runSearch(this.value)">
     </div>
     <div id="playlist">
       <table id="playtable"></table>
@@ -239,6 +239,7 @@
     <div id="listtools">
       <a href="javascript:shuffle()">Shuffle</a> / 
       <a href="javascript:empty()">Clear</a>
+ <a><input type="file" webkitdirectory directory multiple mozdirectory onchange="getSongs(this.files)"> </a>
     </div>
     <div id="songs">
       <table id="songtable" cellspacing=0 cellpadding=0>
